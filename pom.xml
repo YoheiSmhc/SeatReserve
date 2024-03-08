@@ -89,6 +89,17 @@
 					</excludes>
 				</configuration>
 			</plugin>
+			 <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>9.22.3</version>
+                <configuration>
+	   				<port>8081</port>
+	                <url>jdbc:mysql://localhost:3308/seat_reserve</url>  
+	                <user>root</user>   
+	                <password>pass</password> 
+                </configuration>               
+            </plugin>
 		</plugins>
 	</build>
 

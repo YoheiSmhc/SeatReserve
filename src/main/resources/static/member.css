@@ -1,36 +1,51 @@
-   
-	body {
+   body {
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
+            padding: 0 ;
             background-color: rgb(255, 255, 255);
             width:100%;
+/*            align-items: center;*/
+            display: flex;
+            justify-content: center;
         }
+    a{
+		text-decoration: none;
+		color: black;
+/*		align-items: center;*/
+		text-align: center;
+	}
 
-    .container {
-            max-width: 1000px;
-            margin: 10px auto;
-            padding: 30px;
+        .container {
+            max-width: 800px;
+            min-width: 60%;
+            margin: 10px 50px;
+            padding: 10px 90px;
             background-color: #fff;
             border: 1px solid #ccc;
             border-radius: 10px;
+            align-items: center;
+            
+/*display: grid;*/
+            
         }
-    .header{
-		display: grid;
-		grid-template-columns: repeat(3,1fr);
-	}
 
-    .date {
-            text-align: center;
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-    .member-list{
-		text-align: right;
-		line-height: 100px;
+	.title{
+		
+		text-align: center;
+		font-size: 2rem;
+/*		grid-column: 1 / 6;*/
+/*		align-items:fr center;*/
+/*		align-self: center;*/
 	}
-        
-    .seating-area {
+	
+	.member-container{
+		width: 100%;
+		display: grid;
+/*            grid-template-rows: repeat(5,1fr);*/
+            grid-template-columns: repeat(5,1fr);
+            align-items: center;
+	}
+        .seating-area {
             position: relative;
             border: 2px solid #ccc;
             border-radius: 10px;
@@ -44,37 +59,46 @@
             grid-gap: 50px;		
         }
 
+        .member {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
+            border-radius: 50%;
+            background-color: #ccc;
+            margin: 10px;
+/*            display: flex;*/
+/*            justify-content: center;*/
+/*            align-items: center;*/
+            text-align: center;
+            cursor: pointer;
+            align-self: center;
+        }
+        .date {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
 
-    .seats {
+        .seats {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
         }
-    .seats-col{
+        .seats-col{
 			display: flex;
 			flex-flow: column;
 			align-items: center;
 		}
-    .seat {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background-color: #ccc;
-            margin: 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-        }
 
-    .window-area{
+        .window-area{
 /*			width: fit-content;*/
 /*			display: flex;*/
 /*			flex-direction: row;*/
 /*			justify-content: center;*/
 			margin:0 auto;
 		}
-   	 .window-desk {
+        .window-desk {
             width: 100%; /* 座席6つ分の幅 */
             height: 50px; /* 机の高さ */
             background-color: rgb(243, 223, 175);
@@ -82,14 +106,14 @@
         	display: flex;
         }
         
-	.door-area{
+		.door-area{
 			display: grid;
 		    grid-template-columns: 2fr 2fr 1fr;
 		    margin:200	px,0 ;
 		    justify-items:center;
 		
 		}
-	.door-center-desk {
+		.door-center-desk {
 		/*               position: absolute;*/
 
             width: 100%; /* 座席6つ分の幅 */
@@ -99,12 +123,12 @@
             left: calc(50% - 210px); /* 中央配置 */
         	border-radius: 10px;
         }
-    .center-area{
+        .center-area{
 			display: grid;
 			grid-template-columns: 1fr 1fr 1fr;
 		}
 		
-	.meeting-room{
+		.meeting-room{
 			border: solid rgb(128, 128, 128);
 			border-radius: 3%;
 			height: 250px;
@@ -112,7 +136,7 @@
 
 		}
 		
-	.right-area{
+		.right-area{
 			height: 250px;
 			display: grid;
 			grid-template-columns: 1fr 1fr;
@@ -124,7 +148,7 @@
 			;
 			
 		}
-	.seat-right{
+		.seat-right{
 			grid-area: b;
 			align-self: center;
 			width: 60px;
@@ -137,7 +161,7 @@
             align-items: center;
             cursor: pointer;
 		}
-	.door-right-desk {
+		.door-right-desk {
 		/*               position: absolute;*/
 			grid-area: c;
             width: 100%; /* 座席6つ分の幅 */
@@ -148,13 +172,13 @@
         	border-radius: 10px;
         }
 
-    .date-controls {
+        .date-controls {
             display: flex;
             justify-content: space-between;
             font-size: 3rem;
         }
 
-    .date-controls button {
+        .date-controls button {
             background-color: rgb(255, 255, 255);
             color: rgb(192, 192, 192);
             border: none;

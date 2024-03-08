@@ -1,10 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" th:href="@{/member.css}" />
+
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>メンバー一覧</title>
 </head>
 <body>
+	
+	<div class="container">
+		<div class="title">メンバー一覧</div>
+		<a th:href="@{/seat}">戻る</a>
+		
+			 <div class="member-container" >				 
+				
+				 <a 			 
+			 	class="member" 
+			 	th:each="member:${memberlist}" 
+				th:object="${member}"
+				th:id="${member.id}"
+			 	th:text="${member.username}"
+			 	th:href="@{/seat}" 
+				 ></a>
+			
+		</div>
+		
+	</div>
 
 </body>
 </html>
