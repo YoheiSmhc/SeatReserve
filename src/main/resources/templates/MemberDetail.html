@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>座席予約</title>
+</head>
+<body>
+
+<div class="container">
+    <div class="title">座席予約</div>
+	
+	<a th:href="@{/member}">戻る</a>
+    <div class="member-info"
+    th:each="reserve:${memberData}" 
+	th:id="${reserve.Id}"
+ 	>
+	 	<div class="memberId">
+	 	ID：
+	 	<span th:text="${reserve.Id}"></span>
+		</div>
+	 	
+	 	<div class="username">
+	 	名前：
+	 	<span th:text="${reserve.username}"></span>
+		</div>
+	 
+ 	</div>
+		
+    
+    <!-- ここに座席予約フォームなどを追加 -->
+
+</div>
+
+</body>
+</html>

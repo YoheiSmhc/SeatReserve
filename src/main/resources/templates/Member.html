@@ -13,14 +13,16 @@
 		<a th:href="@{/seat}">戻る</a>
 		
 			 <div class="member-container" >				 
-				
+				<form action="">
+					 
+				</form>
 				 <a 			 
 			 	class="member" 
 			 	th:each="member:${memberlist}" 
 				th:object="${member}"
 				th:id="${member.id}"
 			 	th:text="${member.username}"
-			 	th:href="@{/seat}" 
+			 	th:href="@{/member/{userId}(userId=${member.id})}" 
 				 ></a>
 			
 		</div>

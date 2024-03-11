@@ -13,9 +13,21 @@ public class MemberService {
 
 	@Autowired
 	MemberRepository memberRepository;
-	
+
+	/*
+	ユーザー情報を全検索
+	*/
 	public List<Member>seachAll(){
 		return  (List<Member>) memberRepository.findAll();
 		
 	}
+
+	/*
+	ユーザー情報をIdで検索
+	*/
+	public Member findById(Integer id) {
+        return memberRepository.findById(id).get();
+    }
+	
+	
 }
