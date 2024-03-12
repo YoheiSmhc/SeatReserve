@@ -21,7 +21,7 @@
 			 	th:each="member:${memberlist}" 
 				th:object="${member}"
 				th:id="${member.id}"
-			 	th:text="${member.username}"
+			 	th:text="${member.name}"
 			 	th:href="@{/member/{userId}(userId=${member.id})}" 
 				 ></a>
 			

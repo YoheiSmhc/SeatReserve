@@ -11,7 +11,7 @@
     <div class="title">座席予約</div>
 	
 	<a th:href="@{/member}">戻る</a>
-	<div th:text="${memberData.username}"></div>
+	<div th:text="${memberData.name}"></div>
     <div class="member-info"
     th:each="reserve:${reserveData}" 
 	th:id="${reserve.userId}"
