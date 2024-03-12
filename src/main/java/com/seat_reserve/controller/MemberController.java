@@ -17,9 +17,7 @@ public class MemberController {
 	@Autowired
 	MemberService memberService;
 	
-//	以下の処理が、内容理解が乏しい。
-//	memberServiceクラス内のseachAllで取って来た情報たちをmemberlistに格納して
-//	、member.htmlに渡してるのかな？
+//	member.htmlに、メンバー一覧情報を渡す
 	@GetMapping("/member")
 	public String displayMember(Model model) {
 		List<Member>memberlist=memberService.seachAll();

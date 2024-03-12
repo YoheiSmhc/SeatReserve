@@ -37,26 +37,15 @@ public class ReserveController {
 		*/
 		model.addAttribute("memberData",memberData);
 		
-		 List<Reserve> reserveData = reserveService.findByUserId(userId);
-	        model.addAttribute("reserveData", reserveData);
-
+		/*
+		予約情報をreserveDataに格納 
+		*/
+		List<Reserve> reserveData = reserveService.findByUserId(userId);
+		model.addAttribute("reserveData", reserveData);
+			
+//		memberDetail.htmlを返す
 		return "memberDetail";
 		
 	}
-	/*
-	社員の予約詳細情報
-	*/
-//	@GetMapping("/member/{userId}")
-//	public String displayReserveDetail(@PathVariable Integer userId,Model model) {
-//		/*
-//		Idに合致した情報をmemberData変数に格納する
-//		*/ 
-//		List<Reserve> reserveData = reserveService.findByUserId(userId);
-//		/*
-//		memberData変数を、HTMLでも使えるようにするために、モデルのmemberDataオブジェクトに変換する？
-//		*/
-//		model.addAttribute("reserveData",reserveData);
-//		return "memberDetail";
-//		
-//	}
+	
 }
