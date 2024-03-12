@@ -11,18 +11,19 @@
     <div class="title">座席予約</div>
 	
 	<a th:href="@{/member}">戻る</a>
+	<div th:text="${memberData.username}"></div>
     <div class="member-info"
-    th:each="reserve:${memberData}" 
-	th:id="${reserve.Id}"
+    th:each="reserve:${reserveData}" 
+	th:id="${reserve.userId}"
  	>
 	 	<div class="memberId">
 	 	ID：
-	 	<span th:text="${reserve.Id}"></span>
+	 	<span th:text="${reserve.userId}"></span>
 		</div>
 	 	
 	 	<div class="username">
-	 	名前：
-	 	<span th:text="${reserve.username}"></span>
+	 	予約対象日：
+	 	<span th:text="${reserve.reserveDate}"></span>
 		</div>
 	 
  	</div>

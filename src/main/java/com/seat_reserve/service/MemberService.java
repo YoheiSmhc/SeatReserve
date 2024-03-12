@@ -26,8 +26,8 @@ public class MemberService {
 	ユーザー情報をIdで検索
 	*/
 	public Member findById(Integer id) {
-        return memberRepository.findById(id).get();
+        return  memberRepository.findById(id).get();
     }
 	
-	
+
 }

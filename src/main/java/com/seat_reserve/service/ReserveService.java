@@ -25,9 +25,9 @@ public class ReserveService {
 	/*
 	ユーザー情報をIdで検索
 	*/
-	public Reserve findById(Integer userId) {
-        return reserveRepository.findById(userId).get();
-    }
+//	public Reserve findById(Integer userId) {
+//        return reserveRepository.findById(userId).get();
+//    }
 	
 //	@Autowired
 //    private JdbcTemplate jdbcTemplate; // Spring JDBCのJdbcTemplateを使う
@@ -47,6 +47,12 @@ public class ReserveService {
 //                return reserve;
 //            }});
 //    }
+	
+	public List<Reserve> findByUserId(Integer userId) {
+        return reserveRepository.findByUserId(userId);
+    }
+	
+	
 //    
 	
 }
