@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" th:href="@{/member.css}" />
+
+<head>
+    <meta charset="UTF-8">
+    <title>予約確認</title>
+</head>
+<body>
+
+<div class="container">
+    <div class="title">予約情報詳細</div>
+	
+	<a th:href="@{/member}">戻る</a>
+	<div>
+		予約情報：<span th:text="${reserve_info_2}"></span>
+	</div>
+   
+		
+    
+    <!-- ここに座席予約フォームなどを追加 -->
+
+</div>
+
+</body>
+</html>

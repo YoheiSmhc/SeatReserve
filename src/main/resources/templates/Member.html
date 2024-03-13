@@ -10,22 +10,42 @@
 	
 	<div class="container">
 		<div class="title">メンバー一覧</div>
-		<a th:href="@{/seat}">戻る</a>
+		<span>シート番号：</span>
+		<span th:text="${reserve_info_1}"></span>
+		<div>
+			<a th:href="@{/seat}">戻る</a>
+		</div>
 		
-			 <div class="member-container" >				 
-				<form action="">
-					 
-				</form>
-				 <a 			 
-			 	class="member" 
+			 <div class="member-container" >
+				 
+				 <form th:action="@{/confirmation}"
+				method="post">
+					 <button type="submit" name="reserve_info_2" value="test"></button>
+				 </form>				 
+				<form 
+				th:action="@{/confirmation}"
+				method="post"
 			 	th:each="member:${memberlist}" 
 				th:object="${member}"
 				th:id="${member.id}"
-			 	th:text="${member.name}"
-			 	th:href="@{/member/{userId}(userId=${member.id})}" 
-				 ></a>
+			 	>
+					 <button 
+					 th:text="${member.name}"
+					 class="member"
+					 type="submit" 
+					 name="reserve_info_2" 
+					 th:value="${reserve_info_1 + '_' + member.id}"></button>
+				</form>
+<!--				 <a 			 -->
+<!--			 	class="member" -->
+<!--			 	th:each="member:${memberlist}" -->
+<!--				th:object="${member}"-->
+<!--				th:id="${member.id}"-->
+<!--			 	th:text="${member.name}"-->
+<!--			 	th:href="@{/member/{userId}(userId=${member.id})}" -->
+<!--				 ></a>-->
 			
-		</div>
+			</div>
 		
 	</div>
 
