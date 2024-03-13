@@ -15,7 +15,11 @@
 	<div>
 		予約情報：<span th:text="${reserve_info_2}"></span>
 	</div>
-   
+	
+	<div>予約を確定します。よろしいですか？</div>
+   	<form th:action="@{/completion}" method="post">
+		   <input type="submit">
+	   </form>
 		
     
     <!-- ここに座席予約フォームなどを追加 -->
