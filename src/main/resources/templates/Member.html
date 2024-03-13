@@ -21,6 +21,7 @@
 				<form 
 				th:action="@{/confirmation}"
 				method="post"
+
 			 	th:each="member:${memberlist}" 
 				th:object="${member}"
 				th:id="${member.id}"
