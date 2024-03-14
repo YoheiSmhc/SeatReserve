@@ -21,7 +21,17 @@ public class ReserveService {
 		return  (List<Reserve>) reserveRepository.findAll();
 		
 	}
-
+	
+//	選択した情報をDBに登録。setterで登録する。
+	 public void completeReservation(String date, Integer seat, Integer user) {
+//	        Reserveレポジトリをインスタンス化
+	        Reserve reserve = new Reserve();
+	        reserve.setReserveDate(date);
+	        reserve.setSeatId(seat);
+	        reserve.setUserId(user);
+	        
+	        reserveRepository.save(reserve);
+	    }
 	/*
 	ユーザー情報をIdで検索
 	*/
@@ -48,6 +58,7 @@ public class ReserveService {
 //            }});
 //    }
 	
+//	 社員IDで検索。
 	public List<Reserve> findByUserId(Integer userId) {
         return reserveRepository.findByUserId(userId);
     }

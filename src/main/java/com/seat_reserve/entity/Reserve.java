@@ -12,12 +12,12 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "reserve")
+@Table(name = "reservations")
 public class Reserve {
     @Id
-    @Column(name = "reserve_id")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer reserveID;
+    private Integer reserveId;
     
     @Column(name = "user_id")
     private Integer userId;

@@ -15,7 +15,7 @@
      <div class="container">
         <div class="header">
 			<div class="calender"></div>
-	        <div class="date" id="currentDate"th:text="${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"></div>
+        	<input class="date" id="selectedDate" th:value="${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}" readonly>
 			<div class="member-list"><a th:href="@{/member}">メンバ</a></div>			
 			
 		</div>
@@ -31,14 +31,13 @@
 	            <div class="window-desk"></div>
 	            <div class="seats">
 					
-					<form th:action="@{/member}" method="post" >　
-						//以下で、選択した日付＋座席IDを送信したい
-						<button type="submit" class="seat"  name="reserve_info_1" th:value="${#dates.format(#calendars.createNow(), 'yyyy-MM-dd') + '_1'}"></button>
+					<form th:action="@{/member}" method="get" >　
+<!--						//以下で、選択した日付＋座席IDを送信したい-->
+						<button type="submit" class="seat"  name="reserve_info_1" value="1"></button>
 				 	</form>
-  					<form th:action="@{/member}" method="post" >　
-						<button type="submit" class="seat"  name="reserve_info_1" value="2"></button>
-					</form>
-	                <div class="seat">3</div>
+	                <button onclick="selectSeat('2')" class="seat">2</button>
+
+	                <button onclick="selectSeat('3')" class="seat">3</button>
 	                <div class="seat">4</div>
 	                <div class="seat">5</div>
 	                <div class="seat">6</div>
@@ -68,27 +67,23 @@
         </div>
     </div>
     
-
-
-    <script>
-        document.getElementById('prevDate').addEventListener('click', function() {
-            // 以前の日付に移動するロジックをここに追加
-            console.log('前の日付に移動');
-        });
-
-        document.getElementById('nextDate').addEventListener('click', function() {
-            // 次の日付に移動するロジックをここに追加
-            console.log('次の日付に移動');
-        });
+ <script>
+        function selectSeat(seatNumber) {
+            var selectedDate = document.getElementById("selectedDate").value;
+            var url = "member?seat=" + encodeURIComponent(seatNumber) + "&date=" + encodeURIComponent(selectedDate);
+            window.location.href = url;
+        }
     </script>
+
+
     
     <script th:inline="javascript">
     /*<![CDATA[*/
     function changeDate(offset) {
-        var currentDate = new Date(document.getElementById('currentDate').textContent.trim());
+        var currentDate = new Date(document.getElementById('selectedDate').value);
         currentDate.setDate(currentDate.getDate() + offset);
         var dateString = currentDate.toISOString().slice(0,10);
-        document.getElementById('currentDate').textContent = dateString;
+        document.getElementById('selectedDate').value = dateString;
     }
     /*]]>*/
 </script>

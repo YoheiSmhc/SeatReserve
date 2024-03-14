@@ -18,6 +18,6 @@ public interface ReserveRepository extends JpaRepository<Reserve,Integer>{
 //	           "FROM Reserve r " +
 //	           "JOIN User u ON r.userId = u.userId " +
 //	           "WHERE r.userId = :userId")
-	List<Reserve>findByUserId(@Param("userId") Integer userId);
+	List<Reserve>findByUserId(@Param("userID") Integer userID);
 }
 
