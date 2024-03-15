@@ -23,9 +23,11 @@ public class MemberController {
 	public String displayMember(@RequestParam(name="seat",required=false)String seat,
 								@RequestParam(name="date",required=false)String date,
 								Model model) {
+		if(seat!=null&&date!=null) {
 		model.addAttribute("seat",seat);
 		model.addAttribute("date",date);
-
+	}else {}
+//		メンバー一覧を取得し、memberlistオブジェクトに格納
 		List<Member>memberlist=memberService.seachAll();
 		model.addAttribute("memberlist",memberlist);
 		return "member";

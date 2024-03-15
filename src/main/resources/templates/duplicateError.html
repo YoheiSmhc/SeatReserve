@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" th:href="@{/member.css}" />
+
+<head>
+    <meta charset="UTF-8">
+    <title>重複エラー</title>
+</head>
+<body>
+
+<div class="container">
+    <div class="title">重複エラー</div>
+	
+	<a th:href="@{/seat}">はい</a>
+	<div>
+<!--		予約情報：<span th:text="${reserve_data}"></span>-->
+		日時：<span th:text="${date}"></span><br>
+		席：<span th:text="${seat}"></span><br>
+		社員ID：<span th:text="${member}"></span>
+	</div>
+	
+	<div>予約を確定します。よろしいですか？</div>
+   	<form th:action="@{/completion}" th:method="post">
+ 		<input type="hidden" th:name="date" th:value="${date}">
+	    <input type="hidden" th:name="seat" th:value="${seat}">
+	    <input type="hidden" th:name="member" th:value="${member}">
+	    <input type="submit">	  
+     </form>
+		
+    
+    <!-- ここに座席予約フォームなどを追加 -->
+
+</div>
+
+</body>
+</html>

@@ -1,5 +1,7 @@
 package com.seat_reserve.controller;
 
+import java.time.LocalDate;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,7 +30,7 @@ public class CompletionController {
 	//以下で、DBにインサートする
 	@PostMapping("/completion")
 	public String postCompletion(
-			@RequestParam String date,
+			@RequestParam LocalDate date,
             @RequestParam Integer seat,
             @RequestParam Integer member,
             Model model) {

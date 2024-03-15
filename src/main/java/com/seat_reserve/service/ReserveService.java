@@ -1,5 +1,7 @@
 package com.seat_reserve.service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,14 +25,21 @@ public class ReserveService {
 	}
 	
 //	選択した情報をDBに登録。setterで登録する。
-	 public void completeReservation(String date, Integer seat, Integer user) {
+	 public void completeReservation(LocalDate date, Integer seat, Integer user) {
 //	        Reserveレポジトリをインスタンス化
 	        Reserve reserve = new Reserve();
 	        reserve.setReserveDate(date);
 	        reserve.setSeatId(seat);
 	        reserve.setUserId(user);
+	        LocalDateTime now = LocalDateTime.now();
+	        reserve.setCreatedAt(now);
 	        
 	        reserveRepository.save(reserve);
+	    }
+	 
+	  // 指定された日付に基づいて予約情報を取得するメソッド
+	    public List<Reserve> findByDate(LocalDate date) {
+	        return reserveRepository.findByReserveDate(date);
 	    }
 	/*
 	ユーザー情報をIdで検索

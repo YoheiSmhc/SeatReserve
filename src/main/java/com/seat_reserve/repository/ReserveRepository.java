@@ -1,5 +1,6 @@
 package com.seat_reserve.repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -19,5 +20,7 @@ public interface ReserveRepository extends JpaRepository<Reserve,Integer>{
 //	           "JOIN User u ON r.userId = u.userId " +
 //	           "WHERE r.userId = :userId")
 	List<Reserve>findByUserId(@Param("userID") Integer userID);
+    List<Reserve> findByReserveDate(LocalDate reserveDate);
+
 }
 
