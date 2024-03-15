@@ -10,15 +10,15 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="user")
+@Table(name="users")
 public class Member {
 	@Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 	
-	@Column(name="username")
-	private String username;
+	@Column(name="name")
+	private String name;
 	
 	@Column(name="password")
 	private String password;

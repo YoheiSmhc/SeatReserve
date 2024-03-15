@@ -10,22 +10,35 @@
 	
 	<div class="container">
 		<div class="title">メンバー一覧</div>
-		<a th:href="@{/seat}">戻る</a>
+		<span>シート番号：</span>
+		<span th:text="${param.seat}"></span>
+		<br>
+		<span>日付：</span>
+		<span th:text="${param.date}"></span>
+		<div>
+			<a th:href="@{/seat}">戻る</a>
+		</div>
 		
-			 <div class="member-container" >				 
-				<form action="">
-					 
-				</form>
-				 <a 			 
-			 	class="member" 
+			 <div class="member-container" >
+				 
+				<form 
+				th:action="@{/confirmation}"
+				method="post"
+
 			 	th:each="member:${memberlist}" 
 				th:object="${member}"
 				th:id="${member.id}"
-			 	th:text="${member.username}"
-			 	th:href="@{/member/{userId}(userId=${member.id})}" 
-				 ></a>
-			
-		</div>
+			 	>
+					 <button 
+					 th:text="${member.name}"
+					 class="member"
+					 type="submit" 
+					 name="reserve_data"
+					 th:value="${param.date} + '_' + ${param.seat} + '_' + ${member.id}" 
+					 ></button>
+				</form>
+
+			</div>
 		
 	</div>
 
