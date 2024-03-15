@@ -8,19 +8,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.seat_reserve.entity.Member;
-import com.seat_reserve.service.MemberService;
+import com.seat_reserve.entity.User;
+import com.seat_reserve.service.UserService;
 
 
 @Controller
-public class MemberController {
+public class UserController {
 	
 	@Autowired
-	MemberService memberService;
+	UserService userService;
 	
 //	member.htmlに、メンバー一覧情報を渡す
-	@GetMapping("/member")
-	public String displayMember(@RequestParam(name="seat",required=false)String seat,
+	@GetMapping("/user")
+	public String displayUser(@RequestParam(name="seat",required=false)String seat,
 								@RequestParam(name="date",required=false)String date,
 								Model model) {
 		if(seat!=null&&date!=null) {
@@ -28,9 +28,9 @@ public class MemberController {
 		model.addAttribute("date",date);
 	}else {}
 //		メンバー一覧を取得し、memberlistオブジェクトに格納
-		List<Member>memberlist=memberService.seachAll();
-		model.addAttribute("memberlist",memberlist);
-		return "member";
+		List<User>userlist=userService.seachAll();
+		model.addAttribute("userlist",userlist);
+		return "user";
 		
 	}
 //	@PostMapping("/member")

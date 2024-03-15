@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.seat_reserve.entity.Member;
 import com.seat_reserve.entity.Reserve;
-import com.seat_reserve.service.MemberService;
+import com.seat_reserve.entity.User;
 import com.seat_reserve.service.ReserveService;
+import com.seat_reserve.service.UserService;
 
 
 @Controller
@@ -26,21 +26,21 @@ public class ReserveController {
 	ReserveService reserveService;
 	
 	@Autowired
-	MemberService memberService;
+	UserService userService;
 
 	/*
 	社員の詳細情報
 	*/
-	@GetMapping("/member/{userId}")
-	public String displayMemberDetail(@PathVariable Integer userId,Model model) {
+	@GetMapping("/user/{userId}")
+	public String displayUserDetail(@PathVariable Integer userId,Model model) {
 		/*
 		Idに合致した情報をmemberData変数に格納する
 		*/ 
-		Member memberData = memberService.findById(userId);
+		User userData = userService.findById(userId);
 		/*
 		memberData変数を、HTMLでも使えるようにするために、モデルのmemberDataオブジェクトに変換する？
 		*/
-		model.addAttribute("memberData",memberData);
+		model.addAttribute("userData",userData);
 		
 		/*
 		予約情報をreserveDataに格納 
@@ -49,7 +49,7 @@ public class ReserveController {
 		model.addAttribute("reserveData", reserveData);
 			
 //		memberDetail.htmlを返す
-		return "memberDetail";
+		return "userDetail";
 		
 	}
 	

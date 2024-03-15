@@ -23,21 +23,21 @@ public class ConfirmationController {
 	member.htmlから、各情報を渡しながらconfirmation.htmlに遷移する。
 	*/
 	@PostMapping("/confirmation")
-	public String output2(@RequestParam String reserve_data,Model model) {
+	public String getReserveData(@RequestParam String reserve_data,Model model) {
 //		model.addAttribute("reserve_data",reserve_data);
         System.out.println(reserve_data);
         if(reserve_data != null && !reserve_data.isEmpty()){// モデルに各値を追加
         	String[] parts = reserve_data.split("_");
         	LocalDate date = LocalDate.parse(parts[0]); 
         	Integer seat = Integer.parseInt(parts[1]);
-        	Integer member = Integer.parseInt(parts[2]);
+        	Integer user = Integer.parseInt(parts[2]);
         model.addAttribute("date", date);
         model.addAttribute("seat", seat);
-        model.addAttribute("member", member);
+        model.addAttribute("user", user);
 		
 		return "confirmation";
         }else {
-        	return"redirect:/memberDetail";
+        	return"redirect:/userDetail";
         }
 	}
 	
@@ -45,7 +45,7 @@ public class ConfirmationController {
 //	@PostMapping("/completion")
 //    public String completeReservation(@RequestParam String date,
 //                                      @RequestParam String seat,
-//                                      @RequestParam String member,
+//                                      @RequestParam String user,
 //                                      Model model) {
 //        // ここでDBへの登録処理を行う
 //        // 例えば、サービスクラスを使用して登録処理を行う

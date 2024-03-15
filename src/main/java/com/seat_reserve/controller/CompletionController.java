@@ -32,10 +32,10 @@ public class CompletionController {
 	public String postCompletion(
 			@RequestParam LocalDate date,
             @RequestParam Integer seat,
-            @RequestParam Integer member,
+            @RequestParam Integer user,
             Model model) {
            
-		reserveService.completeReservation(date, seat, member);
+		reserveService.completeReservation(date, seat, user);
             	
 		return "completion";
 	}

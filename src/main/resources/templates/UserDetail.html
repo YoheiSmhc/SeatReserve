@@ -10,9 +10,9 @@
 <div class="container">
     <div class="title">予約情報詳細</div>
 	
-	<a th:href="@{/member}">戻る</a>
+	<a th:href="@{/user}">戻る</a>
 	<div>
-		名前：<span th:text="${memberData.name}"></span>
+		名前：<span th:text="${userData.name}"></span>
 	</div>
     <div class="member-info"
     th:each="reserve:${reserveData}" 
