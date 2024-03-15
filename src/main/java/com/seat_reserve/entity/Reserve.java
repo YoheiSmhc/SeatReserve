@@ -3,11 +3,16 @@ package com.seat_reserve.entity;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -22,7 +27,6 @@ public class Reserve {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer reserveId;
     
-    //こいつを紐づける
     @Column(name = "user_id")
     private Integer userId;
     
@@ -38,9 +42,13 @@ public class Reserve {
 //    @Transient
 //    private String name;
     
-//    @ManyToOne(fetch = FetchType.LAZY,cascade=XX)
-//    @JoinColumn(name = "id", referencedColumnName = "user_id")
-//    private Member member;
+//    Hibernateのプロキシオブジェクトをシリアライズ可能なオブジェクトに変換。良く分からないけど、これをしないと予約情報を取ってくることができない。
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+//    Reserveが多、userが1なので
+    @ManyToOne(fetch = FetchType.LAZY)
+//    user_idは上でも指定していて、重複している状態。なので、こちらは挿入や更新をfalseにしておく。setterやgetterは上のseta_idにまかせる
+    @JoinColumn(name = "user_id", referencedColumnName = "id",insertable = false, updatable = false)
+	public User user;
     
     @PrePersist
     public void prePersist() {

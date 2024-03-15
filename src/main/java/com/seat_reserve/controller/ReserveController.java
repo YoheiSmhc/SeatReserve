@@ -56,21 +56,13 @@ public class ReserveController {
 	// 指定された日付に基づいて予約情報を取得し、JSON形式で返す
     @GetMapping("/reservations")
     public ResponseEntity<List<Reserve>> getReservationsByDate(
-            @RequestParam("date") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date) {
-        List<Reserve> reservations = reserveService.findByDate(date);
-//       
-//        for (Reserve reservation: reservations) {
-//        	// 予約に関連するユーザーのIDを取得
-//            Integer userId = reservation.getUserId();
-//            // ユーザーIDを使用してユーザー名を取得
-//            Member member = memberService.findById(userId);
-//           
-//            // 取得したユーザー名を予約に設定
-//            reservation.getName().setName(member.getName());
-//        }
-//            
+            @RequestParam("date") 
+            @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date) {
+//        	List<Reserve> reservations = reserveService.findByDate(date);
+       
+        	List<Reserve> reservations = reserveService.findByDateWithUser(date);
         
-        return new ResponseEntity<>(reservations, HttpStatus.OK);
-    }
+        	return new ResponseEntity<>(reservations, HttpStatus.OK);
+    }	
 	
 }

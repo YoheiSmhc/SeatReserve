@@ -37,6 +37,7 @@ public class ConfirmationController {
 		
 		return "confirmation";
         }else {
+        	//なにもなかったら、userDetailに飛ばしたい。
         	return"redirect:/userDetail";
         }
 	}

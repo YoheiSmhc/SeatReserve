@@ -124,7 +124,7 @@ function updateSeatTable(reservations,selectedDate) {
         //この条件がマッチしていない。本当はマッチしているのに。
         if (matchingReservation) {
             seatElement.innerHTML = `
-                <div>${matchingReservation.userId}</div>
+                <div>${matchingReservation.user.name}</div>
             `;
         } else {
             seatElement.innerHTML = ''; // 予約情報が存在しない場合は、なにも表示しない
