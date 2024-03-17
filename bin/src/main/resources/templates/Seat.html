@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>座席表</title>
+<link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{/seat.css}" />
+
+</head>
+
+<body>
+
+     <div class="container">
+        <div class="header">
+			<div class="calender"></div>
+	        <div class="date">2024-03-07</div>
+			<div class="member-list"><a th:href="@{/member}">メンバ</a></div>			
+			
+		</div>
+        
+        
+        <div class="date-controls">
+            <button id="prevDate">◀</button>
+            <button id="nextDate">▶</button>
+        </div>
+        
+        <div class="seating-area">
+			<div class="window-area">	
+	            <div class="window-desk"></div>
+	            <div class="seats">
+	                <div class="seat" value="1">山下</div>
+	                <div class="seat">2</div>
+	                <div class="seat">3</div>
+	                <div class="seat">4</div>
+	                <div class="seat">5</div>
+	                <div class="seat">6</div>
+	            </div>
+            </div>
+            <div class="door-area">	
+	            <div class="meeting-room">			
+				</div>
+				<div class="center-area">	
+		            <div class="seats-col">
+		                <div class="seat">7</div>
+		                <div class="seat">8</div>
+		                <div class="seat">9</div>
+	                </div>
+		            <div class="door-center-desk"></div>
+	                <div class="seats-col">
+		                <div class="seat">10</div>
+		                <div class="seat">11</div>
+		                <div class="seat">12</div>
+		            </div>
+	            </div>
+	            <div class="right-area">
+					<div class="seat-right">13</div>
+					<div class="door-right-desk"></div>
+				</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('prevDate').addEventListener('click', function() {
+            // 以前の日付に移動するロジックをここに追加
+            console.log('前の日付に移動');
+        });
+
+        document.getElementById('nextDate').addEventListener('click', function() {
+            // 次の日付に移動するロジックをここに追加
+            console.log('次の日付に移動');
+        });
+    </script>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</body>
+</html>

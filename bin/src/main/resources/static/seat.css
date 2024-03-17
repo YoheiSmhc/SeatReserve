@@ -6,11 +6,6 @@
             background-color: rgb(255, 255, 255);
             width:100%;
         }
-        
-    form{
-		display: contents;
-		
-	}
 
     .container {
             max-width: 1000px;
@@ -29,8 +24,6 @@
             text-align: center;
             font-size: 3rem;
             margin-bottom: 20px;
-            border: none;
-		outline:none;
         }
     .member-list{
 		text-align: right;
@@ -72,23 +65,8 @@
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            border: none;
         }
 
-	.seat-right{
-			grid-area: b;
-			align-self: center;
-/*			width: 60px;*/
-/*            height: 60px;*/
-/*            border-radius: 50%;*/
-/*            background-color: #ccc;*/
-/*            margin: 10px;*/
-/*            display: flex;*/
-/*            justify-content: center;*/
-/*            align-items: center;*/
-/*            cursor: pointer;*/
-/*            border:none*/
-		}
     .window-area{
 /*			width: fit-content;*/
 /*			display: flex;*/
@@ -145,6 +123,19 @@
 			"b c"
 			;
 			
+		}
+	.seat-right{
+			grid-area: b;
+			align-self: center;
+			width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #ccc;
+            margin: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
 		}
 	.door-right-desk {
 		/*               position: absolute;*/
