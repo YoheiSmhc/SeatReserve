@@ -4,17 +4,14 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>予約削除</title>
+    <title>重複エラー</title>
 </head>
 <body>
 
 <div class="container">
-    <div class="title">予約を削除します。よろしいですか？</div>
+    <div class="title">重複エラー</div>
 	
-	<form action="@{/delete/completion}"method="POST">
-		<button name="duplicate" value="yes">はい</button>
-	</form>
-	<div>はい</div>
+	<div>${user}</div>
 	
 	<a th:href="@{/seat}">座席表に戻る</a>
 <!--	<div>-->

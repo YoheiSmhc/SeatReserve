@@ -48,6 +48,11 @@ public class ReserveService {
 	    public List<Reserve> findByDate(LocalDate date) {
 	        return reserveRepository.findByReserveDate(date);
 	    }
+	    
+//		   指定された日付に基づいて予約情報を取得するメソッド
+		    public List<Reserve> findByDateAndUser(LocalDate reserveDate,Integer userId ) {
+		        return reserveRepository.findByReserveDateAndUserId(reserveDate,userId);
+		    }
 	 
 //	 Userテーブルを結合したうえで情報検索
 	 public List<Reserve> findByDateWithUser(LocalDate date) {

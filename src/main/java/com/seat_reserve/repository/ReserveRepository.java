@@ -19,8 +19,9 @@ public interface ReserveRepository extends JpaRepository<Reserve,Integer>{
 //	           "FROM Reserve r " +
 //	           "JOIN User u ON r.userId = u.userId " +
 //	           "WHERE r.userId = :userId")
-	List<Reserve>findByUserId(@Param("userID") Integer userID);
+	List<Reserve>findByUserId(@Param("userID") Integer userId);
     List<Reserve> findByReserveDate(LocalDate reserveDate);
+    List<Reserve> findByReserveDateAndUserId(LocalDate reserveDate,Integer userId);
 
 }
 

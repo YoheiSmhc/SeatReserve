@@ -39,9 +39,6 @@ public class Reserve {
     @Column(name = "created_at")
     private LocalDateTime createdAt;
     
-//    @Transient
-//    private String name;
-    
 //    Hibernateのプロキシオブジェクトをシリアライズ可能なオブジェクトに変換。良く分からないけど、これをしないと予約情報を取ってくることができない。
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 //    Reserveが多、userが1なので
