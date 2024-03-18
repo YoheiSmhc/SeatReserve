@@ -3,36 +3,55 @@
 <link rel="stylesheet" th:href="@{/member.css}" />
 
 <head>
-    <meta charset="UTF-8">
-    <title>重複エラー</title>
+	<meta charset="UTF-8">
+	<title>削除</title>
 </head>
+
 <body>
 
-<div class="container">
-    <div class="title">重複エラー</div>
-	
-	<div>${user}</div>
-	
-	<a th:href="@{/seat}">座席表に戻る</a>
-<!--	<div>-->
-<!--		予約情報：<span th:text="${reserve_data}"></span>-->
-<!--		日時：<span th:text="${date}"></span><br>-->
-<!--		席：<span th:text="${seat}"></span><br>-->
-<!--		社員ID：<span th:text="${member}"></span>-->
-<!--	</div>-->
-	
-<!--	<div>予約を確定します。よろしいですか？</div>-->
-<!--   	<form th:action="@{/completion}" th:method="post">-->
-<!-- 		<input type="hidden" th:name="date" th:value="${date}">-->
-<!--	    <input type="hidden" th:name="seat" th:value="${seat}">-->
-<!--	    <input type="hidden" th:name="member" th:value="${member}">-->
-<!--	    <input type="submit">	  -->
-<!--     </form>-->
-		
-    
-    <!-- ここに座席予約フォームなどを追加 -->
+	<div class="container">
+		<div class="title">予約削除</div>
 
-</div>
+		<form action="/deleteCompletion" method="post">
+			<ul>
+				<!-- reservesからreserveIdを取り出してリスト化 -->
+				<th:block th:each="reserve : ${listByDateAndSeat}">
+					<li>
+						<label>
+							<!-- reserveIdを配列として送信 -->
+							<input type="hidden" name="reserveIds" th:value="${reserve.reserveId}">
+
+							<span th:text="${reserve.reserveDate}"></span><br>
+							<span th:text="${reserve.user.name}"></span>
+						</label>
+					</li>
+				</th:block>
+			</ul>
+			<input type="submit" value="確定">
+		</form>
+		<div>はい</div>
+
+		<a th:href="@{/seat}">座席表に戻る</a>
+		<!--	<div>-->
+		<!--		予約情報：<span th:text="${reserve_data}"></span>-->
+		<!--		日時：<span th:text="${date}"></span><br>-->
+		<!--		席：<span th:text="${seat}"></span><br>-->
+		<!--		社員ID：<span th:text="${member}"></span>-->
+		<!--	</div>-->
+
+		<!--	<div>予約を確定します。よろしいですか？</div>-->
+		<!--   	<form th:action="@{/completion}" th:method="post">-->
+		<!-- 		<input type="hidden" th:name="date" th:value="${date}">-->
+		<!--	    <input type="hidden" th:name="seat" th:value="${seat}">-->
+		<!--	    <input type="hidden" th:name="member" th:value="${member}">-->
+		<!--	    <input type="submit">	  -->
+		<!--     </form>-->
+
+
+		<!-- ここに座席予約フォームなどを追加 -->
+
+	</div>
 
 </body>
+
 </html>

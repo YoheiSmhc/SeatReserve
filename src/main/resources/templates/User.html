@@ -24,7 +24,7 @@
 				<form 
 				th:action="@{/confirmation}"
 				method="post"
-
+				
 			 	th:each="user:${userlist}" 
 				th:object="${user}"
 				th:id="${user.id}"
@@ -34,7 +34,7 @@
 					 class="member"
 					 type="submit" 
 					 name="reserve_data"
-					 th:value="${param.date} + '_' + ${param.seat} + '_' + ${user.id}" 
+					 th:value="${param.date} + '_' + ${param.seat} + '_' + ${user.id} + '_' + ${user.name}" 
 					 ></button>
 				</form>
 

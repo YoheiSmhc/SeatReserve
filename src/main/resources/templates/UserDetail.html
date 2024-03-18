@@ -12,23 +12,42 @@
 	
 	<a th:href="@{/user}">戻る</a>
 	<div>
-		名前：<span th:text="${userData.name}"></span>
+		名前：<span th:text="${userName}"></span>
 	</div>
-    <div class="member-info"
-    th:each="reserve:${reserveData}" 
-	th:id="${reserve.userId}"
- 	>
-	 	<div class="memberId">
-	 	ID：
-	 	<span th:text="${reserve.userId}"></span>
-		</div>
+	
+	<table>
+        <thead>
+            <tr>
+                <th>日付</th>
+                <th>座席番号</th>
+                <th>名前</th>
+                <!-- 他の予約情報の列を追加 -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="reserve : ${reserves}">
+                <td th:text="${reserve.reserveDate}"></td>
+                <td th:text="${reserve.seatId}"></td>
+                <td th:text="${reserve.user.name}"></td>
+                <!-- 他の予約情報の列を追加 -->
+            </tr>
+        </tbody>
+    </table>
+<!--    <div class="member-info"-->
+<!--    th:each="reserve:${reserveData}" -->
+<!--	th:id="${reserve.userId}"-->
+<!-- 	>-->
+<!--	 	<div class="memberId">-->
+<!--	 	ID：-->
+<!--	 	<span th:text="${reserve.userId}"></span>-->
+<!--		</div>-->
 	 	
-	 	<div class="username">
-	 	予約対象日：
-	 	<span th:text="${reserve.reserveDate}"></span>
-		</div>
+<!--	 	<div class="username">-->
+<!--	 	予約対象日：-->
+<!--	 	<span th:text="${reserve.reserveDate}"></span>-->
+<!--		</div>-->
 	 
- 	</div>
+<!-- 	</div>-->
 		
     
     <!-- ここに座席予約フォームなどを追加 -->
