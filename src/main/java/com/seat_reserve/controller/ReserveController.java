@@ -27,7 +27,7 @@ public class ReserveController {
 
 	
 	
-	// 指定された日付に基づいて予約情報を取得し、JSON形式で返す
+	// 指定された日付に基づいて予約情報を取得し、JSON形式で返す。予約情報反映のため。
     @GetMapping("/reservations")
     public ResponseEntity<List<Reserve>> getReservationsByDate(
             @RequestParam("date") 

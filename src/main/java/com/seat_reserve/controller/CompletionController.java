@@ -12,30 +12,20 @@ import com.seat_reserve.service.ReserveService;
 
 @Controller
 public class CompletionController {
-	
-	
+
 	@Autowired
 	ReserveService reserveService;
-	
-//	@GetMapping("/completion")
-//	public String displayCompletion() {
-//	
-//		return "completion";
-//		
-//	}
-	
-	
-	
+
 	//以下で、DBにインサートする
 	@PostMapping("/completion")
 	public String postCompletion(
 			@RequestParam LocalDate date,
-            @RequestParam Integer seat,
-            @RequestParam Integer user,
-            Model model) {
-           
+			@RequestParam Integer seat,
+			@RequestParam Integer user,
+			Model model) {
+
 		reserveService.completeReservation(date, seat, user);
-            	
+
 		return "completion";
 	}
 }

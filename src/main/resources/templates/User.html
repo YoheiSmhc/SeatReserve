@@ -11,10 +11,10 @@
 	<div class="container">
 		<div class="title">メンバー一覧</div>
 		<span>シート番号：</span>
-		<span th:text="${param.seat}"></span>
+		<span th:text="${param.seatId}"></span>
 		<br>
 		<span>日付：</span>
-		<span th:text="${param.date}"></span>
+		<span th:text="${param.reservationDate}"></span>
 		<div>
 			<a th:href="@{/seat}">戻る</a>
 		</div>
@@ -34,7 +34,7 @@
 					 class="member"
 					 type="submit" 
 					 name="reserve_data"
-					 th:value="${param.date} + '_' + ${param.seat} + '_' + ${user.id} + '_' + ${user.name}" 
+					 th:value="${param.reservationDate} + '_' + ${param.seatId} + '_' + ${user.id} + '_' + ${user.name}" 
 					 ></button>
 				</form>
 

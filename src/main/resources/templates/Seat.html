@@ -17,7 +17,7 @@
         <div class="header">
 			<div class="calender"></div>
         	<input class="date" id="selectedDate" th:value="${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}" readonly>
-			<div class="member-list"><a th:href="@{/user}">メンバ</a></div>			
+			<div class="member-list"><a th:href="@{/user}"><img src="images/user_icon.png" width="60" height="60"></a></div>			
 			
 		</div>
         
@@ -74,7 +74,7 @@
 	 //各座席を選択したら、その座席の予約実行するために、メンバー画面を表示する。
         function selectSeat(seatNumber) {
             var selectedDate = document.getElementById("selectedDate").value;
-            var url = "user?seat=" + encodeURIComponent(seatNumber) + "&date=" + encodeURIComponent(selectedDate);
+            var url = "user?seatId=" + encodeURIComponent(seatNumber) + "&reservationDate=" + encodeURIComponent(selectedDate);
             window.location.href = url;
         }
     </script>
