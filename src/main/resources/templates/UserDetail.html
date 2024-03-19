@@ -25,10 +25,10 @@
             </tr>
         </thead>
         <tbody>
-            <tr th:each="reserve : ${reserves}">
-                <td th:text="${reserve.reserveDate}"></td>
-                <td th:text="${reserve.seatId}"></td>
-                <td th:text="${reserve.user.name}"></td>
+            <tr th:each="reservation : ${listReservationsByUser}">
+                <td th:text="${reservation.reserveDate}"></td>
+                <td th:text="${reservation.seatId}"></td>
+                <td th:text="${reservation.user.name}"></td>
                 <!-- 他の予約情報の列を追加 -->
             </tr>
         </tbody>

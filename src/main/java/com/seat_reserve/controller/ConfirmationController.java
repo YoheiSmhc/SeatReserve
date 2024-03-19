@@ -69,8 +69,8 @@ public class ConfirmationController {
 					} else {
 						//userをuserDetailに渡して、そのパラメータをもとに、reservationsテーブルを検索して、userDetail.htmlで表示したい。
 						
-						List<Reserve>reserves=reserveService.findByUser(user);
-						model.addAttribute("reserves",reserves);
+						List<Reserve>ListReservationsByUser=reserveService.findByUser(user);
+						model.addAttribute("listReservationsByUser",ListReservationsByUser);
 						return "UserDetail";
 					}
 				} catch (NumberFormatException | DateTimeParseException e) {

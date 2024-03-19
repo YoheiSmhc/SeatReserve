@@ -32,14 +32,14 @@ public class UserController {
 			@RequestParam(name = "seat", required = false) Integer seat,
 			@RequestParam(name = "date", required = false) LocalDate date,
 			Model model) {
-		//seatIdとreserveDateが渡されたら、それぞれを渡して、予約機能に移る
 
-		//userService.findBySeatAndDate(seat,date);
-
-		//既にseatとdateが入ってたら、削除機能に遷移
+		//seatとdateを元に、reservationsテーブル内を検索し、ListByDateAndSeatに格納
 		List<Reserve> ListByDateAndSeat = reserveService.findByDateAndSeat(date, seat);
-		//seatとdateがあったら削除機能、なければuser.htmlを介して予約機能
+		//ListByDateAndSeatにデータがあったら削除機能、なければuser.htmlを介して予約機能もしくは予約情報一覧表示機能に遷移する
 		if (ListByDateAndSeat == null || ListByDateAndSeat.isEmpty()) {
+			//ListByDateAndSeatが空、つまりはまだその日付のその座席が空もしくはメンバーアイコンを押してきてdateとseatがnullだった場合、こちらの処理
+			
+			
 			model.addAttribute("seat", seat);
 			model.addAttribute("date", date);
 
@@ -48,15 +48,9 @@ public class UserController {
 			model.addAttribute("userlist", userlist);
 			return "user";
 		} else {
-			//拡張for文で、ListByDateAndSeatの全ての値を取得
-//			for (Reserve reserve : ListByDateAndSeat) {
-//				Integer reserveId = reserve.getReserveId();
-//				System.out.println("ReserveIDです：" + reserveId);
-//
-//				//reserveIdで削除を実行
-//
-//			}
-			//	
+			//ListByDateAndSeatにデータが入っている、つまりはその日付、その座席は既に予約されている場合、削除機能を実施
+			
+			
 			model.addAttribute("listByDateAndSeat", ListByDateAndSeat);
 			// reserveIdsを空のリストとして追加する
 			model.addAttribute("reserveIds", new ArrayList<Integer>());
