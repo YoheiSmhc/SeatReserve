@@ -38,11 +38,11 @@ public class Reservation {
 	@Column(name = "created_at")
 	private LocalDateTime createdAt;
 
-	//    Hibernateのプロキシオブジェクトをシリアライズ可能なオブジェクトに変換。良く分からないけど、これをしないと予約情報を取ってくることができない。
+	//Hibernateのプロキシオブジェクトをシリアライズ可能なオブジェクトに変換。良く分からないけど、これをしないと予約情報を取ってくることができない。
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-	//    Reserveが多、userが1なので
+	//Reserveが多、userが1なので
 	@ManyToOne(fetch = FetchType.LAZY)
-	//    user_idは上でも指定していて、重複している状態。なので、こちらは挿入や更新をfalseにしておく。setterやgetterは上のseta_idにまかせる
+	//user_idは上でも指定していて、重複している状態。なので、こちらは挿入や更新をfalseにしておく。setterやgetterは上のseta_idにまかせる
 	@JoinColumn(name = "user_id", referencedColumnName = "id", insertable = false, updatable = false)
 	public User user;
 
