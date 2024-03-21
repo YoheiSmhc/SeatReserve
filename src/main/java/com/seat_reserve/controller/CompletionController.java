@@ -8,24 +8,24 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.seat_reserve.service.ReserveService;
+import com.seat_reserve.service.ReservationService;
 
 @Controller
 public class CompletionController {
 
 	@Autowired
-	ReserveService reserveService;
+	ReservationService reservationService;
 
 	//以下で、DBにインサートする
-	@PostMapping("/completion")
-	public String postCompletion(
+	@PostMapping("/reservation-completed")
+	public String completeReservation(
 			@RequestParam LocalDate date,
 			@RequestParam Integer seat,
 			@RequestParam Integer user,
 			Model model) {
 
-		reserveService.completeReservation(date, seat, user);
+		reservationService.completeReservation(date, seat, user);
 
-		return "completion";
+		return "reservation-completed";
 	}
 }

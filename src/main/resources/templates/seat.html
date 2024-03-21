@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>座席表</title>
+	<link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css}" />
+	<link rel="stylesheet" th:href="@{/seat.css}" />
+
+</head>
+
+<body>
+
+	<div class="container">
+
+		<div class="header">
+			<div class="calender"></div>
+			<input class="date" id="selectedDate" th:value="${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"
+				readonly>
+			<div class="member-list"><a th:href="@{/user}"><img src="images/user_icon.png" width="60" height="60"></a>
+			</div>
+
+		</div>
+
+
+		<div class="date-controls">
+			<button id="prevDate" onclick="changeDate(-1)">◀</button>
+			<button id="nextDate" onclick="changeDate(+1)">▶</button>
+		</div>
+
+		<div class="seating-area">
+			<div class="window-area">
+				<div class="window-desk"></div>
+				<div class="seats">
+
+					<button onclick="selectSeat('1')" class="seat" id="1">
+					</button>
+					<button onclick="selectSeat('2')" class="seat" id="2">
+					</button>
+					<button onclick="selectSeat('3')" class="seat" id="3">
+					</button>
+					<button onclick="selectSeat('4')" class="seat" id="4">
+					</button>
+					<button onclick="selectSeat('5')" class="seat" id="5">
+					</button>
+					<button onclick="selectSeat('6')" class="seat" id="6"></button>
+
+				</div>
+			</div>
+			<div class="door-area">
+				<div class="meeting-room">
+				</div>
+				<div class="center-area">
+					<div class="seats-col">
+						<button onclick="selectSeat('7')" class="seat" id="7"></button>
+						<button onclick="selectSeat('8')" class="seat" id="8"></button>
+						<button onclick="selectSeat('9')" class="seat" id="9"></button>
+					</div>
+					<div class="door-center-desk"></div>
+					<div class="seats-col">
+						<button onclick="selectSeat('10')" class="seat" id="10"></button>
+						<button onclick="selectSeat('11')" class="seat" id="11"></button>
+						<button onclick="selectSeat('12')" class="seat" id="12"></button>
+					</div>
+				</div>
+				<div class="right-area">
+					<button onclick="selectSeat('13')" class="seat seat-right" id="13"></button>
+					<div class="door-right-desk"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		//各座席を選択したら、その座席の予約実行するために、メンバー画面を表示する。
+		function selectSeat(seatNumber) {
+			var selectedDate = document.getElementById("selectedDate").value;
+			var url = "user?seatId=" + encodeURIComponent(seatNumber) + "&reservationDate=" + encodeURIComponent(selectedDate);
+			window.location.href = url;
+		}
+	</script>
+	<script>
+
+		//日付を変更させる。
+		function changeDate(offset) {
+			var currentDate = new Date(document.getElementById('selectedDate').value);
+			currentDate.setDate(currentDate.getDate() + offset);
+			var dateString = currentDate.toISOString().slice(0, 10);
+			document.getElementById('selectedDate').value = dateString;
+			// 日付が変更されたら新しい予約情報を取得して座席表を更新する
+			fetchReservations();
+		}
+
+
+
+		// 日付が変更されたら新しい予約情報を取得して座席表を更新する関数
+		function fetchReservations() {
+			var selectedDate = document.getElementById("selectedDate").value;
+			var url = "/reservations?date=" + encodeURIComponent(selectedDate);
+
+			// 新しい予約情報を取得して座席表を更新するために、サーバーにリクエストを送信する
+			fetch(url)
+				.then(response => response.json())
+				.then(data => {
+					// 取得した予約情報を座席表に反映させる
+
+					console.log(data);
+					updateSeatTable(data, selectedDate);
+				})
+				.catch(error => console.error('Error fetching reservations:', error));
+		}
+
+		// 座席表を更新する関数
+		function updateSeatTable(reservations, selectedDate) {
+			var seatElements = document.querySelectorAll('.seat', '.seat-right');
+
+			// 座席ごとの予約情報を反映させる
+			seatElements.forEach(seatElement => {
+				var seatId = seatElement.id; // 座席のid属性を取得
+				var matchingReservation = reservations.find(reservation => {
+					return reservation.seatId == seatId && reservation.reserveDate == selectedDate;
+				});
+
+				// 予約情報が存在する場合は、座席表に反映させる
+				//この条件がマッチしていない。本当はマッチしているのに。
+				if (matchingReservation) {
+					seatElement.innerHTML = `
+                <div>${matchingReservation.user.name}</div>
+            `;
+				} else {
+					seatElement.innerHTML = ''; // 予約情報が存在しない場合は、なにも表示しない
+				}
+			});
+		}
+
+
+		// 最初にページが読み込まれた際に予約情報を取得して座席表を更新する
+		document.addEventListener('DOMContentLoaded', () => {
+			fetchReservations();
+		});
+
+
+	</script>
+
+</body>
+
+</html>

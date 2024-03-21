@@ -10,9 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.seat_reserve.entity.Reserve;
-import com.seat_reserve.service.ReserveService;
-import com.seat_reserve.service.UserService;
+import com.seat_reserve.entity.Reservation;
+import com.seat_reserve.service.ReservationService;
 
 @Controller
 public class ConfirmationController {
@@ -25,22 +24,20 @@ public class ConfirmationController {
 	//	}
 
 	@Autowired
-	ReserveService reserveService;
+	ReservationService reservationService;
 	
-	@Autowired
-	UserService userService;
 
 	/*
 	user.htmlから、各情報を渡しながらconfirmation.htmlに遷移する。
 	*/
-	@PostMapping("/confirmation")
+	@PostMapping("/reservation-confirmed")
 	//user.htmlからreserve_dataがPOSTで送られてくる
 	public String getReserveData(@RequestParam String reserve_data, Model model) {
-		//model.addAttribute("reserve_data",reserve_data);
-		//System.out.println(reserve_data);
+
 		//予約情報が空じゃないか確認
 		
 		if (reserve_data != null && !reserve_data.isEmpty()) {
+			//"_"で日付、座席番号、userID、user名が分かれているので、1つずつ分割し、配列にいれる
 			String[] parts = reserve_data.split("_");
 			if (parts.length == 4) {
 				LocalDate date = null;
@@ -57,21 +54,22 @@ public class ConfirmationController {
 					//dateとseatが2つともnullだったらuserdetailに
 					if (date != null && seat != null) {
 						//dateとuser_idそれぞれを元に、rerservationsテーブルを検索
-						List<Reserve> ListByDateAndUser = reserveService.findByDateAndUser(date, user);
+						List<Reservation> ListByDateAndUser = reservationService.findByDateAndUser(date, user);
 
 						//duplicationErrorか、confirmationかの分岐
 						if (ListByDateAndUser == null || ListByDateAndUser.isEmpty()) {
-							return "confirmation";
+							
+							return "reservation-confirmed";
 						} else {
-							System.out.println(ListByDateAndUser);
 							return "duplicateError";
 						}
 					} else {
 						//userをuserDetailに渡して、そのパラメータをもとに、reservationsテーブルを検索して、userDetail.htmlで表示したい。
 						
-						List<Reserve>ListReservationsByUser=reserveService.findByUser(user);
+						List<Reservation>ListReservationsByUser=reservationService.findByUser(user);
 						model.addAttribute("listReservationsByUser",ListReservationsByUser);
-						return "UserDetail";
+						//dateとseatがNullなら詳細画面に遷移
+						return "user-detail";
 					}
 				} catch (NumberFormatException | DateTimeParseException e) {
 					//数値や日付の解析に失敗した場合はエラー処理を行う
@@ -80,11 +78,9 @@ public class ConfirmationController {
 				}
 			}
 		} else {
-			System.out.println("データです" + reserve_data);
 			return "redirect:/seat";
 			//なにもなかったら、userDetailに飛ばしたい。
 		}
-		System.out.println("最後の行です" + reserve_data);
 		return "redirect:/seat";
 	}
 }
