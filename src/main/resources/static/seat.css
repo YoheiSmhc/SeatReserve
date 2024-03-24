@@ -6,7 +6,10 @@
             background-color: rgb(255, 255, 255);
             width:100%;
         }
-        
+    input:focus{
+		outline:none;
+		box-shadow: none;
+	}    
     form{
 		display: contents;
 		

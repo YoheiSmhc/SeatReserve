@@ -73,10 +73,11 @@
 <!--			<artifactId>spring-security-test</artifactId>-->
 <!--			<scope>test</scope>-->
 <!--		</dependency>-->
-<dependency>
-		<groupId>org.springframework.session</groupId>
-		<artifactId>spring-session-data-redis</artifactId>
-	</dependency>
+		<dependency>
+			<groupId>com.boottodo</groupId>
+			<artifactId>Login_test-2</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -98,8 +99,8 @@
                 <artifactId>flyway-maven-plugin</artifactId>
                 <version>9.22.3</version>
                 <configuration>
-	   				<port>8080</port>
-	                <url>jdbc:mysql://localhost:3306/seat_reserve</url>  
+	   				<port>8081</port>
+	                <url>jdbc:mysql://localhost:3308/seat_reserve</url>  
 	                <user>root</user>   
 	                <password>pass</password> 
                 </configuration>               
