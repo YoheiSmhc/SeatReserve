@@ -1,36 +1,60 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<link rel="stylesheet" th:href="@{/member.css}" />
+<link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css}" />
+
+<link rel="stylesheet" th:href="@{/seat.css}" />
 
 <head>
-    <meta charset="UTF-8">
-    <title>予約確認</title>
+	<meta charset="UTF-8">
+	<title>予約確認</title>
 </head>
+
 <body>
 
-<div class="container">
-    <div class="title">予約情報確認</div>
-	
-	<a th:href="@{/user}">戻る</a>
-	<div>
-<!--		予約情報：<span th:text="${reserve_data}"></span>-->
-		日時：<span th:text="${date}"></span><br>
-		席：<span th:text="${seat}"></span><br>
-		社員ID：<span th:text="${user}"></span>
-	</div>
-	
-	<div>予約を確定します。よろしいですか？</div>
-   	<form th:action="@{/reservation-completed}" th:method="post">
- 		<input type="hidden" th:name="date" th:value="${date}">
-	    <input type="hidden" th:name="seat" th:value="${seat}">
-	    <input type="hidden" th:name="user" th:value="${user}">
-	    <input type="submit">	  
-     </form>
-		
-    
-    <!-- ここに座席予約フォームなどを追加 -->
+	<div class="fs-1 text-center bg-primary text-white navbar-brand sticky-top mb-5">予約情報確認</div>
+	<div class="container">
 
-</div>
+		<div class="text-end ">
+
+		</div>
+
+		<div class="fs-2 text-center mb-3 border w-auto">
+
+
+			<!--		予約情報：<span th:text="${reserve_data}"></span>-->
+			<div class="w-auto">
+				日時：<span th:text="${date}"></span>
+			</div>
+			<!--			席：<span th:text="${seat}"></span><br>-->
+			<div class="w-auto">
+			社員名：<span th:text="${userName}"></span>	
+			</div>
+			
+
+		</div>
+
+		<div class="fs-2 text-center mb-3">予約を確定します。よろしいですか？</div>
+		<div class="text-center ">
+			<form th:action="@{/user}" th:method="get">
+				<input type="hidden" name="seatId" th:value="${seat}" />
+				<input type="hidden" name="reservationDate" th:value="${date}"/>
+				<input type="submit" class="btn btn-secondary" value="戻る"/>
+				
+			</form>
+			<form th:action="@{/reservation-completed}" th:method="post">
+				<input type="hidden" th:name="date" th:value="${date}">
+				<input type="hidden" th:name="seat" th:value="${seat}">
+				<input type="hidden" th:name="user" th:value="${user}">
+				<input class="btn btn-primary mx-2" type="submit" value="はい">
+			</form>
+		</div>
+
+
+		<!-- ここに座席予約フォームなどを追加 -->
+
+	</div>
 
 </body>
+
 </html>

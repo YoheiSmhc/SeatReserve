@@ -5,8 +5,8 @@
             background-color: rgb(255, 255, 255);
             width:100%;
 /*            align-items: center;*/
-            display: flex;
-            justify-content: center;
+/*            display: flex;*/
+/*            justify-content: center;*/
         }
     a{
 		text-decoration: none;
@@ -16,13 +16,13 @@
 	}
 
         .container {
-            width: 40%;
-            margin: 10px auto;
-            padding: 10px 100px;
-            background-color: #fff;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            align-items: center;
+/*            width: 40%;*/
+/*            margin: 10px auto;*/
+/*            padding: 10px 100px;*/
+/*            background-color: #fff;*/
+/*            border: 1px solid #ccc;*/
+/*            border-radius: 10px;*/
+/*            align-items: center;*/
             
 /*display: grid;*/
             
@@ -38,26 +38,13 @@
 	}
 	
 	.member-container{
-		width: 100%;
-		padding: 0 30px;
-		display: grid;
+/*		width: 100%;*/
+/*		padding: 0 30px;*/
+/*		display: grid;*/
 /*            grid-template-rows: repeat(5,1fr);*/
-            grid-template-columns: repeat(5,1fr);
-            align-items: center;
+/*            grid-template-columns: repeat(5,1fr);*/
+/*            align-items: center;*/
 	}
-        .seating-area {
-            position: relative;
-            border: 2px solid #ccc;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            display: grid;
-            grid-template-rows: 1fr 3fr;
-            grid-gap: 50px;		
-        }
 
         .member {
             display: inline-block;
@@ -75,115 +62,115 @@
             align-self: center;
         }
         
-        .date {
-            text-align: center;
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
+/*        .date {*/
+/*            text-align: center;*/
+/*            font-size: 3rem;*/
+/*            margin-bottom: 20px;*/
+/*        }*/
 
-        .seats {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        .seats-col{
-			display: flex;
-			flex-flow: column;
-			align-items: center;
-		}
+/*        .seats {*/
+/*            display: flex;*/
+/*            justify-content: center;*/
+/*            flex-wrap: wrap;*/
+/*        }*/
+/*        .seats-col{*/
+/*			display: flex;*/
+/*			flex-flow: column;*/
+/*			align-items: center;*/
+/*		}*/
 
-        .window-area{
+/*        .window-area{*/
 /*			width: fit-content;*/
 /*			display: flex;*/
 /*			flex-direction: row;*/
 /*			justify-content: center;*/
-			margin:0 auto;
-		}
-        .window-desk {
-            width: 100%; /* 座席6つ分の幅 */
-            height: 50px; /* 机の高さ */
-            background-color: rgb(243, 223, 175);
-        	border-radius: 10px;
-        	display: flex;
-        }
+/*			margin:0 auto;*/
+/*		}*/
+/*        .window-desk {*/
+/*            width: 100%;  座席6つ分の幅 */
+/*            height: 50px;  机の高さ */
+/*            background-color: rgb(243, 223, 175);*/
+/*        	border-radius: 10px;*/
+/*        	display: flex;*/
+/*        }*/
         
-		.door-area{
-			display: grid;
-		    grid-template-columns: 2fr 2fr 1fr;
-		    margin:200	px,0 ;
-		    justify-items:center;
+/*		.door-area{*/
+/*			display: grid;*/
+/*		    grid-template-columns: 2fr 2fr 1fr;*/
+/*		    margin:200	px,0 ;*/
+/*		    justify-items:center;*/
 		
-		}
-		.door-center-desk {
-		/*               position: absolute;*/
+/*		}*/
+/*		.door-center-desk {*/
+/*		               position: absolute;*/
 
-            width: 100%; /* 座席6つ分の幅 */
-            height: 250px; /* 机の高さ */
-            background-color: rgb(243, 223, 175);
-            top: 50px; /* 座席の上に配置 */
-            left: calc(50% - 210px); /* 中央配置 */
-        	border-radius: 10px;
-        }
-        .center-area{
-			display: grid;
-			grid-template-columns: 1fr 1fr 1fr;
-		}
+/*            width: 100%;  座席6つ分の幅 */
+/*            height: 250px;  机の高さ */
+/*            background-color: rgb(243, 223, 175);*/
+/*            top: 50px;  座席の上に配置 */
+/*            left: calc(50% - 210px);  中央配置 */
+/*        	border-radius: 10px;*/
+/*        }*/
+/*        .center-area{*/
+/*			display: grid;*/
+/*			grid-template-columns: 1fr 1fr 1fr;*/
+/*		}*/
 		
-		.meeting-room{
-			border: solid rgb(128, 128, 128);
-			border-radius: 3%;
-			height: 250px;
-			width:80%;
+/*		.meeting-room{*/
+/*			border: solid rgb(128, 128, 128);*/
+/*			border-radius: 3%;*/
+/*			height: 250px;*/
+/*			width:80%;*/
 
-		}
+/*		}*/
 		
-		.right-area{
-			height: 250px;
-			display: grid;
-			grid-template-columns: 1fr 1fr;
-			grid-template-rows: 1fr 1fr;
+/*		.right-area{*/
+/*			height: 250px;*/
+/*			display: grid;*/
+/*			grid-template-columns: 1fr 1fr;*/
+/*			grid-template-rows: 1fr 1fr;*/
 /*			align-items: bottom;*/
-			grid-template-areas: 
-			"a a"
-			"b c"
-			;
+/*			grid-template-areas: */
+/*			"a a"*/
+/*			"b c"*/
+/*			;*/
 			
-		}
-		.seat-right{
-			grid-area: b;
-			align-self: center;
-			width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background-color: #ccc;
-            margin: 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-		}
-		.door-right-desk {
-		/*               position: absolute;*/
-			grid-area: c;
-            width: 100%; /* 座席6つ分の幅 */
-            height: 100%; /* 机の高さ */
-            background-color: rgb(243, 223, 175);
-            top: 50px; /* 座席の上に配置 */
-            left: calc(50% - 210px); /* 中央配置 */
-        	border-radius: 10px;
-        }
+/*		}*/
+/*		.seat-right{*/
+/*			grid-area: b;*/
+/*			align-self: center;*/
+/*			width: 60px;*/
+/*            height: 60px;*/
+/*            border-radius: 50%;*/
+/*            background-color: #ccc;*/
+/*            margin: 10px;*/
+/*            display: flex;*/
+/*            justify-content: center;*/
+/*            align-items: center;*/
+/*            cursor: pointer;*/
+/*		}*/
+/*		.door-right-desk {*/
+/*		               position: absolute;*/
+/*			grid-area: c;*/
+/*            width: 100%;  座席6つ分の幅 */
+/*            height: 100%;  机の高さ */
+/*            background-color: rgb(243, 223, 175);*/
+/*            top: 50px;  座席の上に配置 */
+/*            left: calc(50% - 210px);  中央配置 */
+/*        	border-radius: 10px;*/
+/*        }*/
 
-        .date-controls {
-            display: flex;
-            justify-content: space-between;
-            font-size: 3rem;
-        }
+/*        .date-controls {*/
+/*            display: flex;*/
+/*            justify-content: space-between;*/
+/*            font-size: 3rem;*/
+/*        }*/
 
-        .date-controls button {
-            background-color: rgb(255, 255, 255);
-            color: rgb(192, 192, 192);
-            border: none;
-            padding: 5px 10px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+/*        .date-controls button {*/
+/*            background-color: rgb(255, 255, 255);*/
+/*            color: rgb(192, 192, 192);*/
+/*            border: none;*/
+/*            padding: 5px 10px;*/
+/*            border-radius: 5px;*/
+/*            cursor: pointer;*/
+/*        }*/

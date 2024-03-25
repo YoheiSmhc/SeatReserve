@@ -12,8 +12,11 @@
 
 <body>
 
-	<div class="container">
-
+<div class="fs-1 text-center bg-primary text-white navbar-brand sticky-top mb-5">
+	SMHC座席表
+</div>
+	<div class="container ">
+		
 		<!--		<div class="header">-->
 		<!--			<div class="calender"></div>-->
 		<!--			<input class="date" id="selectedDate" th:value="${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"-->
@@ -29,29 +32,24 @@
 		<!--			<button id="nextDate" onclick="changeDate(+1)">▶</button>-->
 		<!--		</div>-->
 
-
-		<div class="row mb-3 justify-content-between align-items-center">
+<!--		日付、メンバー一覧の行-->
+		<div class="row mb-3  ">
 			<div class="col">
 
 			</div>
-			<div class="col-10 text-center">
+			<div class="col-8 text-center ">
 				<button id="prevDate" class="btn btn-secondary " onclick="changeDate(-1)">◀</button>
 				<input type="text" class="border-0 text-center fs-2" id="selectedDate"
 					th:value="${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}" readonly>
 				<button id="nextDate" class="btn btn-secondary" onclick="changeDate(+1)">▶</button>
 			</div>
-			<div class="col-auto">
-				<a th:href="@{/user}"><img src="images/user_icon.png" width="60" height="60"></a>
+			<div class="col text-end">
+				<a th:href="@{/user}"><img src="images/user_icon.png" width="50" height="50"></a>
 			</div>
 		</div>
-
-		<div class="row mb-3">
-			<div class="col-6 text-center">
-			</div>
-			<div clasee"col-6">
-			</div>
-		</div>
-		<div class="seating-area">
+		
+<!--		座席表部分-->
+		<div class="seating-area w-100">
 			<div class="window-area">
 				<div class="window-desk"></div>
 				<div class="seats">

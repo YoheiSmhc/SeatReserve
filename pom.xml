@@ -98,8 +98,8 @@
                 <artifactId>flyway-maven-plugin</artifactId>
                 <version>9.22.3</version>
                 <configuration>
-	   				<port>8080</port>
-	                <url>jdbc:mysql://localhost:3306/seat_reserve</url>  
+	   				<port>8081</port>
+	                <url>jdbc:mysql://localhost:3308/seat_reserve</url>  
 	                <user>root</user>   
 	                <password>pass</password> 
                 </configuration>               
