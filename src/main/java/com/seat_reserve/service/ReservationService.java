@@ -3,13 +3,11 @@ package com.seat_reserve.service;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.seat_reserve.entity.Reservation;
-import com.seat_reserve.entity.User;
 import com.seat_reserve.repository.ReservationRepository;
 import com.seat_reserve.repository.UserRepository;
 
@@ -76,17 +74,19 @@ public class ReservationService {
 	//SeatControllerで、Seat.htmlに予約情報を反映させるために使用される
 	public List<Reservation> findByDateWithUser(LocalDate date) {
 		// 日付に基づいて予約情報を取得
-		List<Reservation> reservations = findByDate(date);
+//		List<Reservation> reservations = findByDate(date);
 
-		// 各予約情報に対して、対応するユーザー情報を取得
-		for (Reservation reservation : reservations) {//取得した予約情報1つ1つに処理する
-			Integer userId = reservation.getUserId();//その予約情報のuserIdを取得
-			Optional<User> userOptional = userRepository.findById(userId);//
-			User user = userOptional.orElse(null); // ユーザーが見つからない場合はnullを返す
-			reservation.setUser(user);//userの情報を予約情報にセットする。
-		}
-
-		return reservations;
+//		// 各予約情報に対して、対応するユーザー情報を取得
+//		//懸念点：多数の予約があった場合、N＋１問題が発生する。JOIN句で表結合する方が良い。
+//		for (Reservation reservation : reservations) {//取得した予約情報1つ1つに処理する
+//			Integer userId = reservation.getUserId();//その予約情報のuserIdを取得
+//			Optional<User> userOptional = userRepository.findById(userId);//
+//			User user = userOptional.orElse(null); // ユーザーが見つからない場合はnullを返す
+//			reservation.setUser(user);//userの情報を予約情報にセットする。
+//		}
+//
+//		return reservations;
+		return reservationRepository.findByDateWithUser(date);
 	}
 
 	//	 社員IDで検索。

@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.seat_reserve.entity.Reservation;
@@ -24,5 +25,8 @@ public interface ReservationRepository extends JpaRepository<Reservation,Integer
     List<Reservation> findByReserveDateAndSeatId(LocalDate reserveDate,Integer seatId);
 //    reservationIDを元に削除する
     List<Reservation> deleteByReserveId(Integer reserveId);
+    //検索した
+    @Query("SELECT r FROM Reservation r JOIN FETCH r.user WHERE r.reserveDate = :date")
+    List<Reservation> findByDateWithUser(LocalDate date);
 }
 
