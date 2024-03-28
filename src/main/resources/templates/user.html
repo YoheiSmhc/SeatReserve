@@ -16,7 +16,7 @@
 <!--		<span>シート番号：</span>-->
 <!--		<span th:text="${param.seatId}"></span>-->
 		<br>
-		<div class="fs-3 text-center">
+		<div class="fs-3 text-center"　th:if=${param.reservationDate}>
 			<span>選択中の日付：</span>
 			<span th:text="${param.reservationDate}"></span>
 
